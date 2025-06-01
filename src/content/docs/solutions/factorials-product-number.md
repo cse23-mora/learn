@@ -105,7 +105,7 @@ title: "Factorials Product Number"
 </div>
 </div>
 
-## Solution
+## Solution 1
 > By Nadeesha Jayamanne
 
 ```cpp
@@ -190,3 +190,70 @@ int main() {
     
     return 0;
 }
+```
+
+## Solution 2
+> By Chanupa Gurusinghe
+```cpp
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int n;
+    string a;
+    cin >> n >> a;
+
+    vector<char> result;
+
+    for (char ch : a) {
+        switch (ch) {
+            case '0': case '1':
+                break; // skip
+            case '2':
+                result.push_back('2');
+                break;
+            case '3':
+                result.push_back('3');
+                break;
+            case '4':
+                result.push_back('3');
+                result.push_back('2');
+                result.push_back('2');
+                break;
+            case '5':
+                result.push_back('5');
+                break;
+            case '6':
+                result.push_back('5');
+                result.push_back('3');
+                break;
+            case '7':
+                result.push_back('7');
+                break;
+            case '8':
+                result.push_back('7');
+                result.push_back('2');
+                result.push_back('2');
+                result.push_back('2');
+                break;
+            case '9':
+                result.push_back('7');
+                result.push_back('3');
+                result.push_back('3');
+                result.push_back('2');
+                break;
+        }
+    }
+
+    sort(result.begin(), result.end(), greater<char>());
+
+    for (char c : result)
+        cout << c;
+    cout << endl;
+
+    return 0;
+}
+```

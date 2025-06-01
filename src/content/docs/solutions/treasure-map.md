@@ -161,8 +161,121 @@ The man want to collect maximum number of coins as much as he can. He can end hi
 <div class="highlight"><pre><span></span><span class="mi">3</span> <span class="o">-&gt;</span> <span class="mi">4</span> <span class="o">-&gt;</span> <span class="mi">3</span> <span class="o">-&gt;</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">2</span>
 </pre></div>
 </div></div></div>
-            </div>
-            
-
-            
+            </div>        
 </div>
+
+
+## Solution
+> By Januda Lelwala
+
+```cpp
+#include <iostream>
+#include <vector>
+#include <unordered_map>
+#include <algorithm>
+using namespace std;
+
+class Graph {
+public:
+    int V;
+    vector<vector<pair<int, int>>> adj;
+
+    Graph(int V) {
+        this->V = V;
+        adj.resize(V);
+    }
+
+    void addEdge(int u, int v, int weight) {
+        adj[u - 1].push_back({v - 1, weight});
+        adj[v - 1].push_back({u - 1, weight});
+    }
+};
+
+// Memoization map to store results of subproblems
+unordered_map<string, int> memo;
+
+// Helper function to create a unique key for memoization
+string createKey(int node, int cash, vector<bool>& collected) {
+    string key = to_string(node) + ":" + to_string(cash);
+    for (bool b : collected) {
+        key += ":" + to_string(b);
+    }
+    return key;
+}
+
+int findpath(Graph& g, int node, vector<bool>& collected, int cash, vector<int>& price) {
+    string key = createKey(node, cash, collected);
+    
+    // Check if we already computed this state
+    if (memo.find(key) != memo.end()) {
+        return memo[key];
+    }
+
+    int maxcash = cash;
+
+    // Collect coins at current node if not already collected
+    bool wasCollected = collected[node];
+    if (!wasCollected) {
+        cash += price[node];
+        collected[node] = true;
+        maxcash = cash;
+    }
+
+    // Try all adjacent nodes
+    for (auto& edge : g.adj[node]) {
+        int adjnode = edge.first;
+        int weight = edge.second;
+        
+        if (weight <= cash) {
+            int result = findpath(g, adjnode, collected, cash - weight, price);
+            maxcash = max(maxcash, result);
+        }
+    }
+
+    // Backtrack the coin collection status
+    if (!wasCollected) {
+        collected[node] = false;
+    }
+
+    // Store result in memoization map
+    memo[key] = maxcash;
+    return maxcash;
+}
+
+int main() {
+    int num;
+    cin >> num;
+
+    Graph g(num);
+    vector<bool> collected(num, false);
+    vector<int> p(num);
+
+    // Read treasure points and their coin values
+    for (int i = 0; i < num; i++) {
+        int node, coin;
+        cin >> node >> coin;
+        p[node - 1] = coin;
+    }
+
+    // Read roads between treasure points
+    int edges;
+    cin >> edges;
+    for (int i = 0; i < edges; i++) {
+        int start, end, cost;
+        cin >> start >> end >> cost;
+        g.addEdge(start, end, cost);
+    }
+
+    // Read starting point
+    int s;
+    cin >> s;
+    
+    // Clear memoization map (not strictly necessary, but good practice)
+    memo.clear();
+    
+    // Find maximum coins that can be collected
+    cout << findpath(g, s - 1, collected, 0, p) << endl;
+
+    return 0;
+}
+```
