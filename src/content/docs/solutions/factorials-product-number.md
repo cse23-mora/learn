@@ -109,28 +109,23 @@ title: "Factorials Product Number"
 > By Nadeesha Jayamanne
 
 ```cpp
-#include <bits/stdc++.h>
 #include <cmath>
 #include <cstdio>
 #include <vector>
 #include <iostream>
 #include <algorithm>
 #include <stack>
+#include <map>
 using namespace std;
 
 int fact(int num){
-    int value=1;
-    for(int i=num;i>1;i--){
-        value*=i;
-    }
-    return value;
+    map<int,int> factorials={{2,2},{3,6},{4,24},{5,120},{6,720},{7,5040},{8,40320},{9,362880}};
+    return factorials[num];
 }
 bool isPrime(int num){
-    if(num<=1) return false;
-    for(int i=2;i<=sqrt(num);i++){
-        if (num%i==0) return false;
-    }
+    if(num==2 || num==3 || num==5 || num==7 )
     return true;
+    else return false;
 }
 
 int Big_Prime(int digit, vector<int> &X){
@@ -154,8 +149,7 @@ void div_prime(int value, vector<int> &X){
             Rest=value/fact(i);
             break;
         }
-    }   
-    
+    }       
     if(Rest>2){
         div_prime(Rest, X);
     }
