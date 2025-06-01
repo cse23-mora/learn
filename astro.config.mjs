@@ -25,6 +25,10 @@ export default defineConfig({
 					label: 'Data Structures & Algorithms',
 					autogenerate: { directory: 'dsa' },
 				},
+				{
+					label: 'MiniExtreme Past Problems',
+					autogenerate: { directory: 'solutions' },
+				},
 			],
 		}),
 	],
