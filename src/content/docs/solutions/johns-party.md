@@ -82,3 +82,59 @@ title: "John's Party"
 
             
 </div>
+
+## solution
+
+```cpp
+
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int main() {
+    int N;
+    cin >> N;
+    vector<int> bestFriend(N + 1);
+    for (int i = 1; i <= N; ++i) {
+        int u, v;
+        cin >> u >> v;
+        bestFriend[u] = v;
+    }
+
+    int M;
+    cin >> M;
+    vector<int> invitees(M);
+    for (int i = 0; i < M; ++i) cin >> invitees[i];
+
+    vector<bool> invited(N + 1, false);
+
+    for (int person : invitees) {
+        vector<int> stack;
+        stack.push_back(person);
+
+        while (!stack.empty()) {
+            int current = stack.back();
+            stack.pop_back();
+
+            if (!invited[current]) {
+                invited[current] = true;
+                int bf = bestFriend[current];
+                if (bf != current && !invited[bf]) {
+                    stack.push_back(bf);
+                }
+            }
+        }
+    }
+
+    int count = 0;
+    for (int i = 1; i <= N; ++i) {
+        if (invited[i]) count++;
+    }
+
+    cout << count << "\n";
+    return 0;
+}
+```
