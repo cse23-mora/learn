@@ -195,3 +195,164 @@ Expression 3
 
 
 </div>
+
+
+## Solution
+> Partially working solution (Python)
+
+> By Suhas Dissanayake
+
+```python
+def mi(a,b):
+    return a if a<b else b
+
+def ma(a,b):
+    return a if a>b else b
+
+def is_bop(op):
+     return op in {"+", "-", "*", "@", "%"}
+
+def tokenize(st):
+    tokens = []
+    i = 0
+    
+    while(i < len(st)):
+        if st[i].isdigit():
+            s = ""
+            while i<len(st) and st[i].isdigit():
+                s += st[i]
+                i += 1
+            tokens.append(int(s))
+        elif st[i] == "(": 
+            ob = 0
+            s = ""
+            i+=1
+            while i<len(st):
+                if st[i] == ")":
+                    if ob == 0:
+                        i+=1
+                        break
+                    elif ob > 0:
+                        ob -= 1
+                        s += st[i]
+                    else:
+                        return []
+                elif st[i] == "(":
+                    ob += 1
+                    s += st[i]
+                else:
+                    s += st[i]
+                i += 1
+            tt = tokenize(s)
+            tokens.append(tt)
+                
+        else:
+            tokens.append(st[i])
+            i+=1
+    return tokens
+
+def evaluate(tokens):
+    if isinstance(tokens, int):
+        return tokens
+    
+    if isinstance(tokens,list) and len(tokens) == 1:
+        return evaluate(tokens[0])
+    
+    if not isinstance(tokens, list) or len(tokens) != 3:
+        return "invalid"
+    
+    left, op, right = tokens
+    
+    if not is_bop(op):
+        return "invalid"
+
+    l_eval = evaluate(left)
+    r_eval = evaluate(right)
+    
+    if l_eval == "invalid" or r_eval == "invalid":
+        return "invalid"
+
+    match op:
+        case "+":
+            return l_eval + r_eval
+        case "-":
+            return abs(l_eval - r_eval)
+        case "*":
+            return l_eval * r_eval
+        case "@":
+            return ma(l_eval,r_eval)
+        case "%":
+            return mi(l_eval,r_eval)
+        
+def prioritize(tokens):
+    if isinstance(tokens,int):
+        return tokens
+    if len(tokens) <= 3:
+        return tokens
+    
+    i = len(tokens) - 1;
+    while i > 0:
+        if tokens[i] == "%" or tokens[i] == "@":
+            pr = i - 1
+            ne = i + 1
+            if pr < 0 or ne >= len(tokens):
+                return "invalid"
+            if isinstance(tokens[pr],str) or isinstance(tokens[ne],str):
+                return "invalid"
+            
+            group = [prioritize(tokens[pr]),tokens[i],prioritize(tokens[ne])]
+            tokens[ne] = group
+            del tokens[pr]
+            del tokens[pr]
+            i -= 1
+        i -= 1
+    
+    i = 0;
+    while i<len(tokens):
+        if tokens[i] == "*":
+            pr = i - 1
+            ne = i + 1
+            if pr < 0 or ne >= len(tokens):
+                return "invalid"
+            if isinstance(tokens[pr],str) or isinstance(tokens[ne],str):
+                return "invalid"
+            
+            group = [prioritize(tokens[pr]),tokens[i],prioritize(tokens[ne])]
+            tokens[ne] = group
+            del tokens[pr]
+            del tokens[pr]
+            i -= 1
+        i += 1
+            
+    i = 0;
+    while i<len(tokens):
+        if tokens[i] == "-" or tokens[i] == "+":
+            pr = i - 1
+            ne = i + 1
+            if pr < 0 or ne >= len(tokens):
+                return "invalid"
+            if isinstance(tokens[pr],str) or isinstance(tokens[ne],str):
+                return "invalid"
+            
+            group = [prioritize(tokens[pr]),tokens[i],prioritize(tokens[ne])]
+            tokens[ne] = group
+            del tokens[pr]
+            del tokens[pr]
+            i -= 1
+        i += 1
+        
+    return tokens
+            
+
+count = int(input())
+for i in range(count):
+    exp = input()
+    tokens = tokenize(exp)
+    pri = prioritize(tokens)
+    if pri == "invalid":
+        print("invalid")
+    else:
+        ans = evaluate(pri)
+        print(ans)
+
+```
