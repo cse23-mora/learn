@@ -102,3 +102,63 @@ left)</p>
 
             
 </div>
+
+
+## Solution
+> By Suhas Dissanayake
+
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+int knapsack(vector<int>& weights, vector<int>& values, int W) {
+    int n = weights.size();
+    vector<vector<int>> dp(n + 1, vector<int>(W + 1, 0));
+
+    for (int i = 1; i <= n; i++) {
+        for (int w = 1; w <= W; w++) {
+            if (weights[i-1] <= w) {
+                dp[i][w] = max(values[i-1] + dp[i-1][w - weights[i-1]],
+                              dp[i-1][w]);
+            } else {
+                dp[i][w] = dp[i-1][w];
+            }
+        }
+    }
+    return dp[n][W];
+}
+
+int main() {
+    int G, n;
+    
+    cin >> G >> n;
+    
+    vector<vector<int>> stuffing;
+    
+    for(int i = 0; i < n; i++){
+        int g,x,flour,price;
+        cin >> g >> x >> flour >> price;
+        int count = g/x;
+        stuffing.push_back({flour,price,count});
+    }
+    
+    vector<int> weights;
+    vector<int> values;
+    
+    for(auto s: stuffing){
+        for(int i = 0; i< s[2]; i++){
+            weights.push_back(s[0]);
+            values.push_back(s[1]);
+        }
+    }
+    
+    int answer = knapsack(weights, values, G);
+    cout<< answer << endl;
+
+    return 0;
+}
+```
