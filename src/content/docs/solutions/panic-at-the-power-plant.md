@@ -94,3 +94,49 @@ Next <code>n</code> lines denote the the <code>trimpet</code> and <code>trumput<
 
             
 </div>
+
+## Solution
+> Algorithm by Kalana Abeysundara
+> Code by Suhas Dissanayake
+
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+bool cmp(const vector<int>& a, const vector<int>& b){
+    return a[0] < b[0];
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int j = n;
+    
+    vector<vector<int>> items;
+    
+    while(j--){
+        int a, b;
+        cin >> a >> b;
+        vector<int> item = {a-b, a, b};
+        items.push_back(item);
+    }
+    
+    sort(items.begin(),items.end(),cmp);
+    
+    long long sum = 0;
+    int size = items.size();
+    
+    for(int i = 0; i < size; i++){
+        auto item = items[i];
+        sum += item[1] * i + item[2] * (size - 1 - i);
+    }
+    
+    cout << sum << endl;
+    
+    return 0;
+}
+```
