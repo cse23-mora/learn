@@ -65,3 +65,12 @@ find(2,3) = 128, which is even  </p></div></div></div>
 
             
 </div>
+
+## Solution
+> By 
+
+```cpp
+
+
+
+```

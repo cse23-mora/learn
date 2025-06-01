@@ -137,3 +137,13 @@ This building is like a rectangular plot of land(<em><strong>HxW</strong></em>) 
 
             
 </div>
+
+
+## Solution
+> By 
+
+```cpp
+
+
+
+```
