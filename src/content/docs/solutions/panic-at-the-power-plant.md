@@ -97,6 +97,7 @@ Next <code>n</code> lines denote the the <code>trimpet</code> and <code>trumput<
 
 ## Solution
 > Algorithm by Kalana Abeysundara
+
 > Code by Suhas Dissanayake
 
 ```cpp
