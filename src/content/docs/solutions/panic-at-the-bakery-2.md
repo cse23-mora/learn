@@ -115,36 +115,75 @@ left)</p>
 #include <iostream>
 #include <vector>
 #include <algorithm>
+
 using namespace std;
 
+struct Bun {
+    int stuffing_id;
+    int flour_per_bun;
+    int stuffing_per_bun;
+    int value_per_bun;
+    double value_per_flour;
+};
+
 int main() {
-    int G, x, y, n;
-    cin >> G >> x >> y >> n;
-    
-    vector<int> a(n), b(n), c(n), d(n);
+    int flour, n, plain_flour, plain_value;
+    cin >> flour >> n >> plain_flour >> plain_value;
+
+    vector<int> stuffing_left(n);
+    vector<Bun> buns;
+
     for (int i = 0; i < n; ++i) {
-        cin >> a[i] >> b[i] >> c[i] >> d[i];
+        int stuffing_amt, stuffing_use, flour_use, value;
+        cin >> stuffing_amt >> stuffing_use >> flour_use >> value;
+
+        stuffing_left[i] = stuffing_amt;
+        Bun b;
+        b.stuffing_id = i;
+        b.stuffing_per_bun = stuffing_use;
+        b.flour_per_bun = flour_use;
+        b.value_per_bun = value;
+        b.value_per_flour = (double)value / flour_use;
+        buns.push_back(b);
     }
 
-    vector<int> dp(G + 1, 0);
+    // Add plain bun
+    Bun plain;
+    plain.stuffing_id = -1;
+    plain.stuffing_per_bun = 0;
+    plain.flour_per_bun = plain_flour;
+    plain.value_per_bun = plain_value;
+    plain.value_per_flour = (double)plain_value / plain_flour;
+    buns.push_back(plain);
 
-    for (int i = 0; i < n; ++i) {
-        int maxBuns = d[i] / a[i];
-        for (int j = 0; j < maxBuns; ++j) {
-            for (int g = G; g >= b[i]; --g) {
-                dp[g] = max(dp[g], dp[g - b[i]] + c[i]);
-            }
+    // Sort buns by value per flour (descending)
+    sort(buns.begin(), buns.end(), [](const Bun &a, const Bun &b) {
+        return a.value_per_flour > b.value_per_flour;
+    });
+
+    int total_earned = 0;
+
+    for (auto &bun : buns) {
+        int max_buns_by_flour = flour / bun.flour_per_bun;
+        int max_buns_by_stuffing = INT32_MAX;
+
+        if (bun.stuffing_id != -1) {
+            max_buns_by_stuffing = stuffing_left[bun.stuffing_id] / bun.stuffing_per_bun;
+        }
+
+        int buns_to_make = min(max_buns_by_flour, max_buns_by_stuffing);
+        total_earned += buns_to_make * bun.value_per_bun;
+        flour -= buns_to_make * bun.flour_per_bun;
+
+        if (bun.stuffing_id != -1) {
+            stuffing_left[bun.stuffing_id] -= buns_to_make * bun.stuffing_per_bun;
         }
     }
 
-    int maxAmount = 0;
-    for (int g = 0; g <= G; ++g) {
-        int plainBuns = (G - g) / x;
-        int total = dp[g] + plainBuns * y;
-        maxAmount = max(maxAmount, total);
-    }
-
-    cout << maxAmount << endl;
+    cout << total_earned << endl;
     return 0;
 }
+
+
+
 ```
