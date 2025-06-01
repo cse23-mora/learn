@@ -104,3 +104,95 @@ title: "Factorials Product Number"
 </div>
 </div>
 </div>
+
+## Solution
+> By Nadeesha Jayamanne
+
+```cpp
+#include <bits/stdc++.h>
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <stack>
+using namespace std;
+
+int fact(int num){
+    int value=1;
+    for(int i=num;i>1;i--){
+        value*=i;
+    }
+    return value;
+}
+bool isPrime(int num){
+    if(num<=1) return false;
+    for(int i=2;i<=sqrt(num);i++){
+        if (num%i==0) return false;
+    }
+    return true;
+}
+
+int Big_Prime(int digit, vector<int> &X){
+    for(int i=digit;i>1;i--){
+        if(isPrime(i)){
+            X.push_back(i);
+            int Rest=1;
+            Rest=fact(digit)/fact(i);            
+            return Rest;
+        }
+    }
+    return -1;
+}
+
+
+void div_prime(int value, vector<int> &X){
+    int Rest=0;
+    for(int i=value;i>1;i--){
+        if(isPrime(i) && value%i==0){
+            X.push_back(i);
+            Rest=value/fact(i);
+            break;
+        }
+    }   
+    
+    if(Rest>2){
+        div_prime(Rest, X);
+    }
+    else if (Rest==2){
+        X.push_back(Rest);
+    }
+}
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    int n;
+    long long a;
+    cin >> n;
+    cin >> a;
+    stack<int> digits;
+    for(int i=n; i>0;i--){
+        int num = a%10;
+        a /= 10;
+        digits.push(num);
+    }
+    
+    vector<int> X;
+    
+    while(!digits.empty()){
+        int digit = digits.top();
+        digits.pop();
+        
+        if(digit==0 || digit ==1){
+            continue;
+        }
+        int rest = Big_Prime(digit, X);
+        div_prime(rest, X);
+    }
+    sort(X.begin(), X.end(), greater<int>());
+    for (int i : X){
+        cout<< i;
+    }
+    
+    return 0;
+}
