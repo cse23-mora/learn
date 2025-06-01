@@ -128,7 +128,62 @@ nums = [5,6,7,8,9,10,11,12] might be rotated at pivot index 3 and become , nums 
 ## Solution
 
 ```cpp
-int main(){
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <sstream>
+using namespace std;
 
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */  
+    vector<int> arr;
+    string input;
+    getline(cin,input);
+    stringstream ss(input);
+    string substr;
+    
+    while (getline(ss, substr, ',')) {  
+        arr.push_back(stoi(substr));
+    }
+    int x;
+    cin>>x;
+    
+    int n=arr.size();
+    int high = n-1;
+    int low=0;
+    while(low<=high){
+        
+        int mid = (low + high)/ 2;
+        if(x == arr[mid]){
+            cout<<mid;
+            return 0;
+        }
+        if(arr[low] <= arr[mid]){
+            //search left
+            if(arr[low] <= x && x < arr[mid]){
+                high = mid - 1;
+            }
+            else{
+                low = mid + 1;
+            }
+        }
+        else{
+            if(arr[mid] < x && x <= arr[high]){
+                low = mid + 1;
+            }
+            else{ 
+                high=mid-1;
+            }
+            //search right
+        }
+        
+            
+    }
+    
+    
+    
+    cout<<-1;
+    return 0;
 }
-```

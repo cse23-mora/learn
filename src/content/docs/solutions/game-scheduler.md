@@ -85,3 +85,70 @@ The second line contains n as the interval</p></div></div></div><div class="chal
 </div></div></div>
             </div>
 </div>
+
+## Solution
+> By Nadeesha Jayamanne
+
+```cpp
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+#include <sstream>
+#include <queue>
+#include <unordered_map>
+
+using namespace std;
+int leastIntervals(vector<char>& tasks, int interval){
+    
+    unordered_map<char, int> freq;
+    for(char team: tasks){
+        freq[team]++;
+    }
+    priority_queue<int> maxHeap;
+    for(auto& pair : freq){
+        maxHeap.push(pair.second);
+    }
+    queue<pair<int,int>> cooldown;
+    int time=0;
+    
+    while(!maxHeap.empty() || !cooldown.empty()){
+        time++;
+        
+        if(!maxHeap.empty()){
+            int curr = maxHeap.top();
+            maxHeap.pop();
+            curr--;
+            if(curr>0){
+                cooldown.push({curr,time+interval});
+            }
+        }
+        if(!cooldown.empty() && cooldown.front().second ==  time){
+            maxHeap.push(cooldown.front().first);
+            cooldown.pop();
+        }
+    }
+    
+    return time;
+}
+
+int main() {
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    string line;
+    getline(cin, line);
+    vector<char> tasks;
+    for (size_t i = 0; i < line.size(); ++i) {
+        if (line[i] >= 'A' && line[i] <= 'Z') {
+            tasks.push_back(line[i]);
+        }
+    }
+    int interval;
+    cin>>interval;    
+    
+    cout<<leastIntervals(tasks,interval);
+    // for(char let:tasks){
+    //     cout<<let<<endl;
+    // }
+    return 0;
+}
