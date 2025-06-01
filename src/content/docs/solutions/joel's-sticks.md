@@ -127,4 +127,4 @@ int main() {
     countTriangles(sticks);
     return 0;
 }
----
+```
