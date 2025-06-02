@@ -65,7 +65,7 @@ The next line contains <span style="font-size: 100%; display: inline-block;" cla
             
 
             
-        </div>
+</div>
 
 ## Solution
 > Solution by Kalana Liyanage
