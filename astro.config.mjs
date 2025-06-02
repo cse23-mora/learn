@@ -12,7 +12,11 @@ export default defineConfig({
 	},
 	integrations: [
 		starlight({
-			title: 'CSE23 Knowledge Base',
+			title: 'Knowledge Hub | CSE23',
+			customCss: [
+				// Relative path to your custom CSS file
+				'./src/styles/custom.css',
+			],
 			sidebar: [
 				// {
 				// 	label: 'Guides',
