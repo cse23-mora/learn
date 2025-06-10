@@ -1,30 +1,23 @@
 /* Dark mode colors */
 :root {
-	--sl-color-accent-low: #1e2235;
-	--sl-color-accent: #5c7aff;
-	--sl-color-accent-high: #c0d3ff;
-	--sl-color-white: #f5f7ff;
-	--sl-color-gray-1: #d0d4e0;
-	--sl-color-gray-2: #a5abc0;
-	--sl-color-gray-3: #7c829c;
-	--sl-color-gray-4: #545a72;
-	--sl-color-gray-5: #363b4f;
-	--sl-color-gray-6: #1e2230;
-	--sl-color-black: #0f111a;
+  --color-bg-primary:    #ffffff; /* Primary page background (light theme) */
+  --color-bg-secondary:  #f5f7fa; /* Secondary background (e.g., section/card BG) */
+  --color-text-primary:  #111827; /* Primary text color (headings, body text) */
+  --color-text-secondary:#6b7280; /* Secondary text (captions, hints) */
+  --color-accent:        #f59e0b; /* Accent color (highlights, emphasis) */
+  --color-link:          #2563eb; /* Link color (hyperlinks) */
+  --color-code-bg:       #eef2f7; /* Code block background */
+  --color-button:        #b45309; /* Button background color (primary buttons) */
 }
 
 /* Light mode colors */
-:root[data-theme='light'] {
-	--sl-color-accent-low: #dee6ff;
-	--sl-color-accent: #3a57d3;
-	--sl-color-accent-high: #243170;
-	--sl-color-white: #0f111a;
-	--sl-color-gray-1: #1e2230;
-	--sl-color-gray-2: #363b4f;
-	--sl-color-gray-3: #545a72;
-	--sl-color-gray-4: #7c829c;
-	--sl-color-gray-5: #a5abc0;
-	--sl-color-gray-6: #d0d4e0;
-	--sl-color-gray-7: #f5f7ff;
-	--sl-color-black: #ffffff;
+:root[data-theme="dark"] {
+  --color-bg-primary:    #0c1828; /* Primary page background (dark theme) */
+  --color-bg-secondary:  #1f2937; /* Secondary background (e.g., section/card BG) */
+  --color-text-primary:  #ffffff; /* Primary text color (headings, body text) */
+  --color-text-secondary:#cbd5e0; /* Secondary text (captions, hints) */
+  --color-accent:        #f9a825; /* Accent color (highlights, emphasis) */
+  --color-link:          #4fd1c5; /* Link color (hyperlinks) */
+  --color-code-bg:       #2c344a; /* Code block background */
+  --color-button:        #fbc02d; /* Button background color (primary buttons) */
 }
