@@ -1,5 +1,5 @@
 ---
-title: "Memory Management in C"
+# Memory Management in C
 ---
 
 ## Memory Layout of a C Program
