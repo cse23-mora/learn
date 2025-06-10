@@ -1,7 +1,6 @@
 ---
 title : "Memory Management in C"
 ---
-## Memory Layout of a C Program
 
 When a C program is executed, the Operating System allocates a chunk of memory divided into distinct segments:
 
