@@ -1,9 +1,7 @@
 ---
 title : "Program Construction Methodology"
 ---
----
-# Program Construction Methodology
----
+
 ## Overview
 
 Program Construction Methodology is a systematic approach to building software programs. It consists of two main components:
