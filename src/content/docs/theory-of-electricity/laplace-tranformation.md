@@ -39,7 +39,7 @@ However, we don't need to calculate in this manner. Instead, we generally obtain
 
 In system analysis, the output in the s-domain is obtained by multiplying the transfer function and input function:
 
-![Diagram 01](https://github.com/NirmalKBandara/theory-of-electricity/blob/958320c32e2f9287f38bc16234df8b8ce3a7e450/images/laplace/Screenshot%20From%202025-06-14%2012-19-24.png)
+![Diagram 01](./images/diagram_1.png)
 
 $$ Y(s) = F(s) \cdot U(s) $$
 
@@ -119,7 +119,7 @@ $$ \mathcal{L}^{-1}\{F(s+a)\} = e^{-at} \cdot f(t) $$
 
 ### Unit Impulse Function $\delta(t)$
 
-![Diagram 02](https://github.com/NirmalKBandara/theory-of-electricity/blob/958320c32e2f9287f38bc16234df8b8ce3a7e450/images/laplace/Screenshot%20From%202025-06-14%2012-44-48.png)
+![Diagram 02](./images/diagram_2.png)
 
 
 - **Laplace Transform:** 
@@ -128,7 +128,7 @@ $$ \mathcal{L}\{\delta(t)\} = 1 $$
 
 ### Unit Step Function $u(t)$
 
-![Diagram 03](https://github.com/NirmalKBandara/theory-of-electricity/blob/958320c32e2f9287f38bc16234df8b8ce3a7e450/images/laplace/Screenshot%20From%202025-06-14%2012-46-06.png)
+![Diagram 03](./images/diagram_3.png)
 
 - **Laplace Transform:** 
 
@@ -137,7 +137,7 @@ $$ \mathcal{L}\{u(t)\} = \frac{1}{s} $$
 
 ### Unit Ramp Function $r(t)$
 
-![Diagram 04](https://github.com/NirmalKBandara/theory-of-electricity/blob/958320c32e2f9287f38bc16234df8b8ce3a7e450/images/laplace/Screenshot%20From%202025-06-14%2012-47-59.png)
+![Diagram 04](./images/diagram_4.png)
 
 - **Laplace Transform:** 
 
@@ -145,7 +145,7 @@ $$ \mathcal{L}\{r(t)\} = \frac{1}{s^2} $$
 
 ### Polynomial Function $y(t) = t^n$
 
-![Diagram 05](https://github.com/NirmalKBandara/theory-of-electricity/blob/958320c32e2f9287f38bc16234df8b8ce3a7e450/images/laplace/Screenshot%20From%202025-06-14%2012-49-23.png)
+![Diagram 05](./images/diagram_5.png)
 
 - **Laplace Transform:** 
 
@@ -154,7 +154,7 @@ $$ \mathcal{L}\{t^n\} = \frac{n!}{s^{n+1}} $$
 
 ### Exponential Function $y(t) = e^{-at}$
 
-![Diagram 06](https://github.com/NirmalKBandara/theory-of-electricity/blob/958320c32e2f9287f38bc16234df8b8ce3a7e450/images/laplace/Screenshot%20From%202025-06-14%2012-49-50.png)
+![Diagram 06](./images/diagram_6.png)
 
 - **Laplace Transform:** 
 
@@ -248,7 +248,7 @@ $$ y(t) = e^{-2.5t}[\cos(1.5t) - 0.33\sin(1.5t)] $$
 
 Instead of transforming time-domain differential equations to the s-domain, we can use the s-domain version of Ohm's law directly to write algebraic equations for circuits.
 
-![Diagram 07](https://github.com/NirmalKBandara/theory-of-electricity/blob/958320c32e2f9287f38bc16234df8b8ce3a7e450/images/laplace/Screenshot%20From%202025-06-14%2013-44-33.png)
+![Diagram 07](./images/diagram_7.png)
 
 ### Circuit Elements in s-Domain
 
@@ -319,10 +319,12 @@ Find the Laplace transform of the unit rectangular pulse:
 
 **Definition:**
 
-$$ r(t) = \begin{cases} 
+$$
+r(t) = \begin{cases} 
 1, & 0 \leq t \leq T \\
 0, & \text{elsewhere} 
-\end{cases} $$
+\end{cases}
+$$
 
 
 **Solution:** Using linearity and time-delay properties:
