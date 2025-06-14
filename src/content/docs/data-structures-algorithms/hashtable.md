@@ -1,3 +1,7 @@
+---
+title : "Hashtable"
+---
+
 # Hash Tables - Complete Guide
 
 ## Table of Contents
