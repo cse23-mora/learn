@@ -7,7 +7,7 @@ Combinational logic circuits produce outputs based **only on current inputs**. T
 
 ---
 
-## 📦 1. Decoder
+## 1. Decoder
 
 ![alt text](image.png)
 
@@ -15,12 +15,12 @@ Combinational logic circuits produce outputs based **only on current inputs**. T
 - Common types: 2-to-4, 3-to-8 decoders.
 - Example: Used in memory address decoding.
 
-### 🔢 2-to-4 Decoder 
+### 2-to-4 Decoder 
 ![alt text](image-3.png)
 ![alt text](image-4.png)
 
 
-### 🔢 3-to-8 Decoder 
+### 3-to-8 Decoder 
 ![alt text](image-5.png)
 
 ### Decoder expansion
@@ -39,7 +39,7 @@ Example:-![alt text](image-6-1.png)
 ![alt text](image-8.png)
 ---
 
-## 🎙️ 2. Encoder
+##  2. Encoder
 
 ![alt text](image-9.png)
 Opposite of Decoding:
@@ -62,7 +62,7 @@ Opposite of Decoding:
 
 ---
 
-## 🔀 3. Multiplexer (MUX)
+##  3. Multiplexer (MUX)
 
 ![alt text](image-15.png)
 
@@ -93,7 +93,7 @@ Opposite of Decoding:
 
 ---
 
-## 🧰 4. Digital Buffers
+## 4. Digital Buffers
 
 ### Single input digital buffer
 
@@ -136,7 +136,7 @@ There are four types of tri-state buffers:
 ![alt text](image-23.png)
 ---
 
-## ⚖️ 5. Comparator
+##  5. Comparator
 
 - Compares two binary numbers.
 
@@ -171,9 +171,9 @@ There are four types of tri-state buffers:
 
 
 
-## ➕➖ 6. Adders, Subtractors, and ALUs
+## 6. Adders, Subtractors, and ALUs
 
-### ➕ Adders:
+###  Adders:
 
 - Do binary addition
 - Inputs: two or more binary numbers
@@ -216,7 +216,7 @@ the chain
   1. Generate & propagate signals
   2. Carry lookahead (sum-of-products)
 - Faster than ripple carry due to parallel carry logic
-### ➖ Subtractors:
+###  Subtractors:
 - A – B = A + 2’s complement of B
 - 2’s complement: B’ + 1
 - Circuit: Adder + inverters on B inputs
@@ -237,7 +237,7 @@ the chain
 
 
 
-### 🧮 ALUs (Arithmetic Logic Units):
+###  ALUs (Arithmetic Logic Units):
 - Perform arithmetic and logical operations.
 - Core component of a CPU.
 
@@ -249,7 +249,7 @@ the chain
 
 ---
 
-## 🧾 7. Lookup Tables (LUTs)
+##  7. Lookup Tables (LUTs)
 
 
 - Memory-based way to implement logic
