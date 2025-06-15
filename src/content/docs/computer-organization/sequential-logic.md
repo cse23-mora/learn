@@ -91,7 +91,9 @@ Output depends on current inputs and past outputs
 - **State Machine :** Sequential Operation
 - **Clocked :** State change with clock edge
 - **Synchronous :** All flip flops use the same clock
-![[Pasted image 20250614163446.png]]
+
+![A](./sequential/Pasted%20image%2020250614163446.png)
+
 ## Example: 3 Bit Counter using D-FlipFlops
 
 ### State Diagram
