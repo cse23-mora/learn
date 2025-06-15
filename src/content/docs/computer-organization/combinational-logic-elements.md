@@ -16,12 +16,12 @@ Combinational logic circuits produce outputs based **only on current inputs**. T
 - Example: Used in memory address decoding.
 
 
-### 🔢 2-to-4 Decoder 
+###  2-to-4 Decoder 
 ![alt text](./combinational/image-3.png)
 ![alt text](./combinational/image-4.png)
 
 
-### 🔢 3-to-8 Decoder 
+###  3-to-8 Decoder 
 ![alt text](./combinational/image-5.png)
 
 ### Decoder expansion
