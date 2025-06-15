@@ -28,7 +28,7 @@ title: Logic circuit Representation
 - Each minterm is true for that row and only that row
 - Find all input combinations for which the output of the function is **True**
 
-![Minterms](./minterm.png)
+![Minterms](./logic/minterm.png)
 
 We can also write the sum of products as
 $$
@@ -43,7 +43,7 @@ $$
 - Each maxterm is false for that row and only that row
 - Find all input combinations for which the output of the function is **False**
 
-![Maxterms](./maxterm.png)
+![Maxterms](./logic/maxterm.png)
 
 We can also write the product of sums as
 
