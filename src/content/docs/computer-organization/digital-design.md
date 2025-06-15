@@ -14,15 +14,15 @@ title: Digital Design
 	- HIGH: 2V - 3.3V
 	- LOW: 0V - 0.8V
 ## Digital Waveforms
-![Digital waveforms](./digital_wave.png)
+![Digital waveforms](./digitaldesign/digital_wave.png)
 
 ### Non-ideal Pulse
-![Non Ideal pulse](./non_ideal_pulse.png)
+![Non Ideal pulse](./digitaldesign/non_ideal_pulse.png)
 ### Duty Cycle
 $$
 Duty\ Cycle = \frac{t_w}{T} \times 100\%
 $$
-![Duty Cycle](./duty_cycle.png)
+![Duty Cycle](./digitaldesign/duty_cycle.png)
 ## Digital Logic Families
 
 Collection of different integrated circuit chips that have:
@@ -33,7 +33,7 @@ Collection of different integrated circuit chips that have:
 
 > Chips from different logic families may not be compatible
 
-![Logic families](./logic_families.png)
+![Logic families](./digitaldesign/logic_families.png)
 
 ### Electrical behavior of Logic Families
 - Logic Voltage level

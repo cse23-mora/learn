@@ -9,19 +9,19 @@ Combinational logic circuits produce outputs based **only on current inputs**. T
 
 ## 📦 1. Decoder
 
-![alt text](image.png)
+![alt text](./combinational/image.png)
 
 - Converts binary input into maximum of m = 2<sup>n</sup> or less  unique output lines.
 - Common types: 2-to-4, 3-to-8 decoders.
 - Example: Used in memory address decoding.
 
 ### 🔢 2-to-4 Decoder 
-![alt text](image-3.png)
-![alt text](image-4.png)
+![alt text](./combinational/image-3.png)
+![alt text](./combinational/image-4.png)
 
 
 ### 🔢 3-to-8 Decoder 
-![alt text](image-5.png)
+![alt text](./combinational/image-5.png)
 
 ### Decoder expansion
 - Each minterm → one AND gate
@@ -30,53 +30,53 @@ Combinational logic circuits produce outputs based **only on current inputs**. T
 - Final AND gates → only 2 inputs
 - ANDs implement minterms
 
-Example:-![alt text](image-6-1.png)
+Example:-![alt text](./combinational/image-6-1.png)
 
  
 
-![alt text](image-7.png)
+![alt text](./combinational/image-7.png)
 ### Implementing logic functions using a decoder
-![alt text](image-8.png)
+![alt text](./combinational/image-8.png)
 ---
 
 ## 🎙️ 2. Encoder
 
-![alt text](image-9.png)
+![alt text](./combinational/image-9.png)
 Opposite of Decoding:
 - m-bit input → n-bit output (n ≤ m ≤ 2ⁿ)
 - Input: one-hot (only one 1)
 
 ### 4-to-2 encoder
-![alt text](image-10.png)
+![alt text](./combinational/image-10.png)
 
 ### 8-to-3 line encoder (octal-to-binary encoder)
-![alt text](image-11.png)
+![alt text](./combinational/image-11.png)
 ### Decimal to BCD encoder
-![alt text](image-12.png)
+![alt text](./combinational/image-12.png)
 ### Priority encoder
-![alt text](image-13.png)
+![alt text](./combinational/image-13.png)
 
 ### Example application:
 - Positional encoder
-![alt text](image-14.png)
+![alt text](./combinational/image-14.png)
 
 ---
 
 ## 🔀 3. Multiplexer (MUX)
 
-![alt text](image-15.png)
+![alt text](./combinational/image-15.png)
 
 - Selects one of many input lines and forwards it to a single output.
 - Controlled using select lines.
 
 
 ### 2 input MUX
-![alt text](image-16.png)
+![alt text](./combinational/image-16.png)
 
 
 ### 4-to-1 MUX
 
-![alt text](image-17.png)
+![alt text](./combinational/image-17.png)
 
 
 ### Difference between Multiplexer, Decoder, and Encoder
@@ -97,11 +97,11 @@ Opposite of Decoding:
 
 ### Single input digital buffer
 
-![alt text](image-18.png)
+![alt text](./combinational/image-18.png)
 
 ### Three state (Tri State buffer)
 
-![alt text](image-19.png)
+![alt text](./combinational/image-19.png)
 
 
 Tri-state Buffer:
@@ -112,10 +112,10 @@ Tri-state Buffer:
 - Common in data buses (e.g., computer peripherals)
 
 ### Tri-state Digital Buffer Data Bus Control
-![alt text](image-20.png)
+![alt text](./combinational/image-20.png)
 
 ### Tri-state Digital Buffer Control
-![alt text](image-21.png)
+![alt text](./combinational/image-21.png)
 
 - allowing only one set of data to pass either a logic “1” or logic “0” output 
 state onto the bus
@@ -130,17 +130,17 @@ There are four types of tri-state buffers:
 - 4. Active low inverting tri-state buffer
 
 #### Tri-state buffer - active high variants
-![alt text](image-22.png)
+![alt text](./combinational/image-22.png)
 
 #### Tri-state buffer - active low variants
-![alt text](image-23.png)
+![alt text](./combinational/image-23.png)
 ---
 
 ## ⚖️ 5. Comparator
 
 - Compares two binary numbers.
 
-![alt text](image-24.png)
+![alt text](./combinational/image-24.png)
 
 ### Types of Comparators
 
@@ -155,17 +155,17 @@ There are four types of tri-state buffers:
      - A > B
 
 #### 1-bit magnitude comparator
-![alt text](image-25.png)
+![alt text](./combinational/image-25.png)
 
 #### 2-bit magnitude comparator
 1. Designing 
-![alt text](image-26.png)
+![alt text](./combinational/image-26.png)
 
 2. Realizing
-![alt text](image-27.png)
+![alt text](./combinational/image-27.png)
 
 #### N-bit magnitude comparator
-![alt text](image-28.png)
+![alt text](./combinational/image-28.png)
 
 
 
@@ -181,28 +181,28 @@ There are four types of tri-state buffers:
 
 
 #### Half Adder: Adds two bits.
-![alt text](image-30.png)
+![alt text](./combinational/image-30.png)
 #### Full Adder: Adds three bits (including carry-in).
 
 -  Has an additional input bit C <sub>in</sub> to represent a carry-in bit coming from a 
 previous addition step
-![alt text](image-31.png)
-![alt text](image-32.png)
+![alt text](./combinational/image-31.png)
+![alt text](./combinational/image-32.png)
 
 #### Full adder implementation with half adders
-![alt text](image-33.png)
+![alt text](./combinational/image-33.png)
 #### Ripple Carry Adder
 
 - Uses n full adders connected in series
 - Carry ripples from LSB to MSB (right to left)
 
 ##### 4-bit ripple carry adder
-![alt text](image-34.png)
+![alt text](./combinational/image-34.png)
 - **Disadvantage:** output will not be valid until any carry-input has “rippled” through every full adder in 
 the chain
 
 #### Carry Lookahead Adder (CLA)
-![alt text](image-35.png)
+![alt text](./combinational/image-35.png)
 
 - Speeds up addition by computing carries in parallel
 - No need to wait for ripple from LSB to MSB
@@ -210,7 +210,7 @@ the chain
   1. Generate carry (from x<sub>i</sub> and y<sub>i</sub>)
   2. Propagate carry (pass carry-in to carry-out)
 
-![alt text](image-36.png)
+![alt text](./combinational/image-36.png)
 
 - 3 levels of delay:
   1. Generate & propagate signals
@@ -223,7 +223,7 @@ the chain
 - Set input carry C0 = 1
 
 #### 4-bit Adder-Subtractor
-![alt text](image-37.png)
+![alt text](./combinational/image-37.png)
 
 
 #### Overflow:
@@ -233,7 +233,7 @@ the chain
   - Two positives → negative result
   - Two negatives → positive result
 - **Example** 
-![alt text](image-38.png)
+![alt text](./combinational/image-38.png)
 
 
 
@@ -241,10 +241,10 @@ the chain
 - Perform arithmetic and logical operations.
 - Core component of a CPU.
 
-![alt text](image-39.png)
+![alt text](./combinational/image-39.png)
 
 - Basic ALU Architecture
-![alt text](image-40.png)
+![alt text](./combinational/image-40.png)
 
 
 ---
@@ -259,11 +259,11 @@ the chain
 - Can be cascaded for complex functions
 
 #### Half adder using LUTs
-![alt text](image-41.png)
+![alt text](./combinational/image-41.png)
 
 #### Multiplexers as LUTs
 
-![alt text](image-42.png)
+![alt text](./combinational/image-42.png)
 
 #### Uses of LUTs:
 1. PLDs: Used in FPGAs/CPLDs to build custom logic
