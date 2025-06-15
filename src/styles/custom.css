@@ -68,3 +68,7 @@ root {
     --sl-color-accent: #4f46e5;
     --sl-color-accent-high: #312e81;
 }
+
+[data-theme=dark] img {
+    filter: invert(1) hue-rotate(180deg);
+}
