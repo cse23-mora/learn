@@ -50,6 +50,11 @@ export default defineConfig({
 					autogenerate: { directory: 'theory-of-electricity' },
 					collapsed: true,
 				},
+				{
+					label: 'Comunication Skills',
+					autogenerate: { directory: 'communication-skills' },
+					collapsed: true,
+				},
 			],
 		}),
 	],
