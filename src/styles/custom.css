@@ -61,9 +61,9 @@
     --sl-color-accent-high: #312e81;
 } */
 
-/* [data-theme=dark] img {
+[data-theme=dark] img {
     filter: invert(1) hue-rotate(180deg);
-} */
+}
 
 mjx-container[jax="SVG"]>svg {
     display: inline;
