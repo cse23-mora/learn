@@ -8,4 +8,5 @@ title: "Table of Contents"
 - [Logic Circuit Representation](/computer-organization/logic-circuit-representation)
 - [Memory Organization](/computer-organization/memory-organization)
 - [Number Systems](/computer-organization/number-systems)
+- [Combinational Logic](/computer-organization/combinational-logic-elements)
 - [Sequential Logic](/computer-organization/sequential-logic)
