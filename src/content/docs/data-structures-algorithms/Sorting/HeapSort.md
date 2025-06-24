@@ -7,6 +7,16 @@ title : "Heap Sort "
 
 ![alt text](Heapsort-example.gif)
 
+
+## Heap Sort Time Complexity
+
+| Step                      | Time Complexity |
+| ------------------------- | --------------- |
+| Build Max Heap            | O(n)            |
+| Extract Max n times       | O(n log n)      |
+| **Total Time Complexity** | **O(n log n)**  |
+
+
 ``` cpp
 
 // C++ program for implementation of Heap Sort using vector
