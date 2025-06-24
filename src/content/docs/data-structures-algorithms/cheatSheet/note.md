@@ -19,3 +19,18 @@ title : "Note"
 
 
 
+### Tree Traversal methods
+
+- Pre-order Traversal (Root → Left → Right)
+- In-order Traversal (Left → Root → Right)
+- Post-order Traversal (Left → Right → Root)
+
+
+### Graph traversal methods
+- Depth-First Search (DFS)
+- Breadth-First Search (BFS)
+
+| Method | Structure | Strategy   | Good For                        |
+| ------ | --------- | ---------- | ------------------------------- |
+| DFS    | Stack     | Deep first | Components, cycles, topological |
+| BFS    | Queue     | Level-wise | Shortest unweighted path        |
