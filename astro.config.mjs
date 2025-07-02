@@ -18,42 +18,90 @@ export default defineConfig({
 				'./src/styles/custom.css',
 			],
 			sidebar: [
-				// {
-				// 	label: 'Guides',
-				// 	items: [
-				// 		// Each item here is one entry in the navigation menu.
-				// 		{ label: 'Example Guide', slug: 'guides/example' },
-				// 	],
-				// },
 				{
-					label: 'Data Structures & Algorithms',
-					autogenerate: { directory: 'data-structures-algorithms' },
-					collapsed: true,
+					label: '2nd Semester',
+					items: [
+						{
+							label: 'Data Structures & Algorithms',
+							autogenerate: { directory: '2nd-semester/data-structures-algorithms' },
+							collapsed: true,
+						},
+						{
+							label: 'Computer Organization and Digital Design',
+							autogenerate: { directory: '2nd-semester/computer-organization' },
+							collapsed: true,
+						},
+						{
+							label: 'Methods of Mathematics',
+							autogenerate: { directory: '2nd-semester/methods-of-mathematics' },
+							collapsed: true,
+						},
+						{
+							label: 'Program Construction',
+							autogenerate: { directory: '2nd-semester/program-construction' },
+							collapsed: true,
+						},
+						{
+							label: 'Theory of Electricity',
+							autogenerate: { directory: '2nd-semester/theory-of-electricity' },
+							collapsed: true,
+						},
+						{
+							label: 'Communication Skills',
+							autogenerate: { directory: '2nd-semester/communication-skills' },
+							collapsed: true,
+						},
+					],
 				},
 				{
-					label: 'Computer Organization and Digital Design',
-					autogenerate: { directory: 'computer-organization' },
-					collapsed: true,
-				},
-				{
-					label: 'Methods of Mathematics',
-					autogenerate: { directory: 'methods-of-mathematics' },
-					collapsed: true,
-				},
-				{
-					label: 'Program Construction',
-					autogenerate: { directory: 'program-construction' },
-					collapsed: true,
-				},
-				{
-					label: 'Theory of Electricity',
-					autogenerate: { directory: 'theory-of-electricity' },
-					collapsed: true,
-				},
-				{
-					label: 'Comunication Skills',
-					autogenerate: { directory: 'communication-skills' },
-					collapsed: true,
+					label: '3rd Semester',
+					items: [
+						{
+							label: 'AI (Artificial Intelligence)',
+							autogenerate: { directory: '3rd-semester/ai' },
+							collapsed: true,
+						},
+						{
+							label: 'Computer Architecture',
+							autogenerate: { directory: '3rd-semester/computer-architecture' },
+							collapsed: true,
+						},
+						{
+							label: 'Thermodynamics',
+							autogenerate: { directory: '3rd-semester/thermodynamics' },
+							collapsed: true,
+						},
+						{
+							label: 'Database Systems',
+							autogenerate: { directory: '3rd-semester/database-systems' },
+							collapsed: true,
+						},
+						{
+							label: 'Differential Equations (DE)',
+							autogenerate: { directory: '3rd-semester/differential-equations' },
+							collapsed: true,
+						},
+						{
+							label: 'Operating Systems',
+							autogenerate: { directory: '3rd-semester/operating-systems' },
+							collapsed: true,
+						},
+						{
+							label: 'Communication Skills',
+							autogenerate: { directory: '3rd-semester/communication-skills' },
+							collapsed: true,
+						},
+						{
+							label: 'Data Communication & Networking',
+							autogenerate: { directory: '3rd-semester/data-communication-networking' },
+							collapsed: true,
+						},
+						{
+							label: 'Applied Statistics',
+							autogenerate: { directory: '3rd-semester/applied-statistics' },
+							collapsed: true,
+						},
+					],
 				},
 			],
 		}),
