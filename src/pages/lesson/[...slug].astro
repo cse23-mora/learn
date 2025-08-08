@@ -1,0 +1,300 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+	const docs = await getCollection('docs');
+	
+	return docs
+		.filter(doc => !doc.id.includes('/index'))
+		.map((doc) => ({
+			params: { slug: doc.id },
+			props: { doc },
+		}));
+}
+
+type Props = {
+	doc: CollectionEntry<'docs'>;
+};
+
+const { doc } = Astro.props;
+const { Content } = await doc.render();
+
+// Parse the path to get semester, subject, and lesson info
+const pathParts = doc.id.split('/');
+const semesterPart = pathParts[0]; // e.g., "2nd-semester"
+const subject = pathParts[1];
+const semester = semesterPart.replace('-semester', '');
+
+// Get lesson title from frontmatter or generate from filename
+const lessonTitle = doc.data.title || pathParts[pathParts.length - 1]
+	.replace(/\.(md|mdx)$/, '')
+	.split('-')
+	.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+	.join(' ');
+
+// Subject names mapping
+const subjectNames = {
+	'data-structures-algorithms': 'Data Structures & Algorithms',
+	'computer-organization': 'Computer Organization and Digital Design',
+	'methods-of-mathematics': 'Methods of Mathematics',
+	'program-construction': 'Program Construction',
+	'theory-of-electricity': 'Theory of Electricity',
+	'communication-skills': 'Communication Skills',
+	'ai': 'AI (Artificial Intelligence)',
+	'computer-architecture': 'Computer Architecture',
+	'thermodynamics': 'Thermodynamics',
+	'database-systems': 'Database Systems',
+	'differential-equations': 'Differential Equations (DE)',
+	'operating-systems': 'Operating Systems',
+	'data-communication-networking': 'Data Communication & Networking',
+	'applied-statistics': 'Applied Statistics'
+};
+
+const subjectName = subjectNames[subject as keyof typeof subjectNames] || subject;
+const semesterTitle = semester === '2nd' ? '2nd Semester' : '3rd Semester';
+---
+
+<Layout title={`${lessonTitle} | ${subjectName}`}>
+	<main>
+		<nav class="breadcrumb">
+			<a href="/">Home</a>
+			<span>/</span>
+			<a href={`/semester/${semester}`}>{semesterTitle}</a>
+			<span>/</span>
+			<a href={`/subject/${semester}/${subject}`}>{subjectName}</a>
+			<span>/</span>
+			<span>{lessonTitle}</span>
+		</nav>
+
+		<article class="lesson">
+			<header class="lesson-header">
+				<h1>{lessonTitle}</h1>
+				<div class="lesson-meta">
+					<span class="subject-badge">{subjectName}</span>
+					<span class="semester-badge">{semesterTitle}</span>
+				</div>
+			</header>
+
+			<div class="lesson-content">
+				<Content />
+			</div>
+		</article>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 2rem;
+		max-width: 900px;
+	}
+
+	.breadcrumb {
+		margin-bottom: 2rem;
+		font-size: 0.9rem;
+	}
+
+	.breadcrumb a {
+		color: #667eea;
+		text-decoration: none;
+	}
+
+	.breadcrumb a:hover {
+		text-decoration: underline;
+	}
+
+	.breadcrumb span {
+		margin: 0 0.5rem;
+		color: #666;
+	}
+
+	.breadcrumb span:last-child {
+		color: #1a202c;
+		font-weight: 500;
+	}
+
+	.lesson {
+		background: white;
+		border: 1px solid #e2e8f0;
+		border-radius: 8px;
+		overflow: hidden;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+	}
+
+	.lesson-header {
+		padding: 2rem;
+		border-bottom: 1px solid #e2e8f0;
+		background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+	}
+
+	.lesson-header h1 {
+		font-size: 2.25rem;
+		font-weight: 700;
+		color: #1a202c;
+		margin-bottom: 1rem;
+		line-height: 1.2;
+	}
+
+	.lesson-meta {
+		display: flex;
+		gap: 0.75rem;
+		flex-wrap: wrap;
+	}
+
+	.subject-badge,
+	.semester-badge {
+		padding: 0.4rem 0.8rem;
+		border-radius: 6px;
+		font-size: 0.85rem;
+		font-weight: 500;
+	}
+
+	.subject-badge {
+		background: #667eea;
+		color: white;
+	}
+
+	.semester-badge {
+		background: #e2e8f0;
+		color: #4a5568;
+	}
+
+	.lesson-content {
+		padding: 2rem;
+		line-height: 1.7;
+	}
+
+	/* Style the rendered markdown content */
+	:global(.lesson-content h1) {
+		font-size: 1.875rem;
+		font-weight: 600;
+		margin: 2rem 0 1rem 0;
+		color: #1a202c;
+		border-bottom: 2px solid #f7fafc;
+		padding-bottom: 0.5rem;
+	}
+
+	:global(.lesson-content h2) {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 1.75rem 0 0.75rem 0;
+		color: #2d3748;
+	}
+
+	:global(.lesson-content h3) {
+		font-size: 1.25rem;
+		font-weight: 600;
+		margin: 1.5rem 0 0.5rem 0;
+		color: #4a5568;
+	}
+
+	:global(.lesson-content p) {
+		margin: 1rem 0;
+		color: #2d3748;
+	}
+
+	:global(.lesson-content ul),
+	:global(.lesson-content ol) {
+		margin: 1rem 0;
+		padding-left: 1.5rem;
+	}
+
+	:global(.lesson-content li) {
+		margin: 0.5rem 0;
+		color: #2d3748;
+	}
+
+	:global(.lesson-content code) {
+		background: #f7fafc;
+		padding: 0.2rem 0.4rem;
+		border-radius: 3px;
+		font-size: 0.9em;
+		color: #e53e3e;
+		font-family: 'Courier New', monospace;
+	}
+
+	:global(.lesson-content pre) {
+		background: #1a202c;
+		color: #f7fafc;
+		padding: 1rem;
+		border-radius: 6px;
+		overflow-x: auto;
+		margin: 1.5rem 0;
+	}
+
+	:global(.lesson-content pre code) {
+		background: none;
+		padding: 0;
+		color: inherit;
+	}
+
+	:global(.lesson-content blockquote) {
+		border-left: 4px solid #667eea;
+		background: #f8fafc;
+		padding: 1rem;
+		margin: 1.5rem 0;
+		font-style: italic;
+	}
+
+	:global(.lesson-content img) {
+		max-width: 100%;
+		height: auto;
+		margin: 1.5rem 0;
+		border-radius: 6px;
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	}
+
+	:global(.lesson-content table) {
+		width: 100%;
+		border-collapse: collapse;
+		margin: 1.5rem 0;
+		background: white;
+		border: 1px solid #e2e8f0;
+		border-radius: 6px;
+		overflow: hidden;
+	}
+
+	:global(.lesson-content th),
+	:global(.lesson-content td) {
+		padding: 0.75rem;
+		text-align: left;
+		border-bottom: 1px solid #e2e8f0;
+	}
+
+	:global(.lesson-content th) {
+		background: #f8fafc;
+		font-weight: 600;
+		color: #1a202c;
+	}
+
+	@media (max-width: 768px) {
+		main {
+			padding: 1rem;
+		}
+		
+		.lesson-header {
+			padding: 1.5rem;
+		}
+
+		.lesson-header h1 {
+			font-size: 1.75rem;
+		}
+		
+		.lesson-content {
+			padding: 1.5rem;
+		}
+
+		:global(.lesson-content h1) {
+			font-size: 1.5rem;
+		}
+
+		:global(.lesson-content h2) {
+			font-size: 1.25rem;
+		}
+
+		:global(.lesson-content pre) {
+			font-size: 0.85rem;
+		}
+	}
+</style>

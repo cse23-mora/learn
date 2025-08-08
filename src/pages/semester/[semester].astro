@@ -1,0 +1,200 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+	return [
+		{ params: { semester: '2nd' } },
+		{ params: { semester: '3rd' } }
+	];
+}
+
+const { semester } = Astro.params;
+
+const semesterData = {
+	'2nd': {
+		title: '2nd Semester',
+		subjects: [
+			{
+				name: 'Data Structures & Algorithms',
+				slug: 'data-structures-algorithms',
+				description: 'Fundamental data structures, algorithms, and their analysis'
+			},
+			{
+				name: 'Computer Organization and Digital Design',
+				slug: 'computer-organization',
+				description: 'Computer architecture, digital logic, and system organization'
+			},
+			{
+				name: 'Methods of Mathematics',
+				slug: 'methods-of-mathematics',
+				description: 'Mathematical methods and numerical techniques'
+			},
+			{
+				name: 'Program Construction',
+				slug: 'program-construction',
+				description: 'Software design patterns and programming methodologies'
+			},
+			{
+				name: 'Theory of Electricity',
+				slug: 'theory-of-electricity',
+				description: 'Electrical circuits, signals, and electromagnetic theory'
+			},
+			{
+				name: 'Communication Skills',
+				slug: 'communication-skills',
+				description: 'Written and verbal communication techniques'
+			}
+		]
+	},
+	'3rd': {
+		title: '3rd Semester',
+		subjects: [
+			{
+				name: 'AI (Artificial Intelligence)',
+				slug: 'ai',
+				description: 'Machine learning, neural networks, and AI algorithms'
+			},
+			{
+				name: 'Computer Architecture',
+				slug: 'computer-architecture',
+				description: 'Advanced computer system design and architecture'
+			},
+			{
+				name: 'Thermodynamics',
+				slug: 'thermodynamics',
+				description: 'Heat transfer, energy systems, and thermodynamic cycles'
+			},
+			{
+				name: 'Database Systems',
+				slug: 'database-systems',
+				description: 'Database design, SQL, and data management systems'
+			},
+			{
+				name: 'Differential Equations (DE)',
+				slug: 'differential-equations',
+				description: 'Mathematical modeling with differential equations'
+			},
+			{
+				name: 'Operating Systems',
+				slug: 'operating-systems',
+				description: 'Process management, memory, and system programming'
+			},
+			{
+				name: 'Communication Skills',
+				slug: 'communication-skills',
+				description: 'Advanced communication and presentation skills'
+			},
+			{
+				name: 'Data Communication & Networking',
+				slug: 'data-communication-networking',
+				description: 'Network protocols, communication systems, and security'
+			},
+			{
+				name: 'Applied Statistics',
+				slug: 'applied-statistics',
+				description: 'Statistical analysis, probability, and data interpretation'
+			}
+		]
+	}
+};
+
+const currentSemester = semesterData[semester as keyof typeof semesterData];
+
+if (!currentSemester) {
+	return Astro.redirect('/');
+}
+---
+
+<Layout title={`${currentSemester.title} | Knowledge Hub`}>
+	<main>
+		<div class="header">
+			<h1>{currentSemester.title}</h1>
+			<p>Choose a subject to explore lessons and materials</p>
+		</div>
+		
+		<div class="subjects-grid">
+			{currentSemester.subjects.map((subject) => (
+				<a href={`/subject/${semester}/${subject.slug}`} class="subject-card">
+					<div class="card-content">
+						<h2>{subject.name}</h2>
+						<p>{subject.description}</p>
+					</div>
+				</a>
+			))}
+		</div>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 2rem;
+		max-width: 1200px;
+	}
+
+	.header {
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.header h1 {
+		font-size: 2.5rem;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+		color: #1a202c;
+	}
+
+	.header p {
+		font-size: 1.1rem;
+		color: #666;
+	}
+
+	.subjects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		gap: 1.5rem;
+	}
+
+	.subject-card {
+		background: white;
+		border: 1px solid #e2e8f0;
+		border-radius: 8px;
+		padding: 1.5rem;
+		text-decoration: none;
+		transition: all 0.3s ease;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+	}
+
+	.subject-card:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+		border-color: #667eea;
+	}
+
+	.card-content h2 {
+		color: #1a202c;
+		font-size: 1.25rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+
+	.card-content p {
+		color: #666;
+		line-height: 1.5;
+		font-size: 0.95rem;
+	}
+
+	@media (max-width: 768px) {
+		main {
+			padding: 1rem;
+		}
+		
+		.header h1 {
+			font-size: 2rem;
+		}
+		
+		.subjects-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

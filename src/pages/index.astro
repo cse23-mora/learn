@@ -1,0 +1,115 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Knowledge Hub | CSE23">
+	<main>
+		<div class="hero">
+			<h1>Knowledge Hub | CSE23</h1>
+			<p>Select your semester to explore educational content</p>
+		</div>
+		
+		<div class="semester-grid">
+			<a href="/semester/2nd" class="semester-card">
+				<div class="card-content">
+					<h2>2nd Semester</h2>
+					<p>Data Structures, Computer Organization, Mathematics, and more</p>
+					<div class="subject-count">6 subjects available</div>
+				</div>
+			</a>
+			
+			<a href="/semester/3rd" class="semester-card">
+				<div class="card-content">
+					<h2>3rd Semester</h2>
+					<p>AI, Database Systems, Operating Systems, and more</p>
+					<div class="subject-count">Coming soon</div>
+				</div>
+			</a>
+		</div>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		padding: 2rem;
+		max-width: 1200px;
+	}
+
+	.hero {
+		text-align: center;
+		margin-bottom: 4rem;
+	}
+
+	.hero h1 {
+		font-size: 3rem;
+		font-weight: 700;
+		margin-bottom: 1rem;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+
+	.hero p {
+		font-size: 1.2rem;
+		color: #666;
+	}
+
+	.semester-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 2rem;
+		max-width: 800px;
+		margin: 0 auto;
+	}
+
+	.semester-card {
+		background: white;
+		border: 1px solid #e2e8f0;
+		border-radius: 12px;
+		padding: 2rem;
+		text-decoration: none;
+		transition: all 0.3s ease;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
+
+	.semester-card:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+		border-color: #667eea;
+	}
+
+	.card-content h2 {
+		color: #1a202c;
+		font-size: 1.5rem;
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+
+	.card-content p {
+		color: #666;
+		margin-bottom: 1rem;
+		line-height: 1.6;
+	}
+
+	.subject-count {
+		color: #667eea;
+		font-weight: 500;
+		font-size: 0.9rem;
+	}
+
+	@media (max-width: 768px) {
+		main {
+			padding: 1rem;
+		}
+		
+		.hero h1 {
+			font-size: 2rem;
+		}
+		
+		.semester-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
