@@ -1,54 +1,129 @@
-# Starlight Starter Kit: Basics
+# CSE Learning Hub
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+A comprehensive learning platform for Computer Science and Engineering students, built with Astro and featuring organized course materials, notes, and resources.
+
+## 📚 About
+
+This learning hub contains educational materials for CSE students, organized by semester and subject. Currently includes content for:
+
+### 2nd Semester
+- **Communication Skills** - Grammar, formal communication, writing techniques
+- **Computer Organization** - Digital design, logic circuits, memory organization, sequential logic
+- **Data Structures & Algorithms** - Sorting algorithms, graphs, hash tables, competitive programming
+- **Methods of Mathematics** - Numerical methods, interpolation, integration, differential equations
+- **Program Construction** - Design patterns, OOP, memory management, multi-threading
+- **Theory of Electricity** - Fourier transforms, Laplace transformations, transformers, mutual inductance
+
+### 3rd Semester
+- Additional subjects (structure in place for future content)
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Installation
+
+```bash
+# Clone the repository
+git clone <repository-url>
+cd learn
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
+```
+
+The site will be available at `http://localhost:4321`
+
+## 🛠️ Development Commands
+
+| Command | Action |
+|---------|--------|
+| `npm install` | Install dependencies |
+| `npm run dev` | Start development server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run astro` | Run Astro CLI commands |
+
+## 📁 Project Structure
 
 ```
-npm create astro@latest -- --template starlight
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/starlight/tree/main/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/starlight/tree/main/examples/basics)
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/withastro/starlight&create_from_path=examples/basics)
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fwithastro%2Fstarlight%2Ftree%2Fmain%2Fexamples%2Fbasics&project-name=my-starlight-docs&repository-name=my-starlight-docs)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro + Starlight project, you'll see the following folders and files:
-
-```
-.
-├── public/
+learn/
+├── public/          # Static assets (favicons, images)
 ├── src/
-│   ├── assets/
-│   ├── content/
-│   │   ├── docs/
-│   └── content.config.ts
-├── astro.config.mjs
-├── package.json
-└── tsconfig.json
+│   ├── content/     # Course materials and documentation
+│   │   └── docs/    # Organized by semester/subject
+│   ├── layouts/     # Astro layout components
+│   ├── pages/       # Site pages and API routes
+│   └── styles/      # Custom CSS
+├── astro.config.mjs # Astro configuration
+└── package.json     # Project dependencies
 ```
 
-Starlight looks for `.md` or `.mdx` files in the `src/content/docs/` directory. Each file is exposed as a route based on its file name.
+## ✨ Features
 
-Images can be added to `src/assets/` and embedded in Markdown with a relative link.
+- **Organized Content**: Materials structured by semester and subject
+- **Mathematical Support**: LaTeX/MathJax rendering for equations and formulas
+- **Image Integration**: Support for diagrams, charts, and visual aids
+- **API Endpoints**: JSON APIs for dynamic content access
+- **Responsive Design**: Mobile-friendly interface
+- **Search & Navigation**: Easy content discovery
 
-Static assets, like favicons, can be placed in the `public/` directory.
+## 📖 Content Structure
 
-## 🧞 Commands
+Content is organized in `src/content/docs/` following this pattern:
+- `{semester}/` (e.g., `2nd-semester/`, `3rd-semester/`)
+  - `{subject}/` (e.g., `computer-organization/`, `data-structures-algorithms/`)
+    - `*.md` files with course materials
+    - Asset folders for images and diagrams
 
-All commands are run from the root of the project, from a terminal:
+## 🤝 Contributing
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+We welcome contributions! Please see our [Code of Conduct](CODE_OF_CONDUCT.md) for community guidelines.
 
-## 👀 Want to learn more?
+### Adding Content
 
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+1. Navigate to the appropriate semester/subject directory
+2. Create or edit `.md` files with your content
+3. Use frontmatter for page metadata:
+   ```yaml
+   ---
+   title: Your Page Title
+   description: Optional description
+   ---
+   ```
+4. Place images in subject-specific asset folders
+
+### Technical Contributions
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📄 License
+
+This project is open source. Please ensure all contributed content is properly licensed and attributed.
+
+## 🔧 Built With
+
+- [Astro](https://astro.build/) - Static site generator
+- [MathJax](https://www.mathjax.org/) - Mathematical notation rendering
+- [Remark](https://remark.js.org/) - Markdown processing
+- [Sharp](https://sharp.pixelplumbing.com/) - Image optimization
+
+## 📞 Support
+
+For questions, issues, or suggestions:
+- Open an issue on GitHub
+- Contact the maintainers
+- Join our community discussions
+
+---
+
+Happy Learning! 🎓
