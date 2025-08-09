@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://learn.cse23.org/sitemap-index.xml
+
+# Block crawling of API endpoints since they're duplicates of lesson pages
+Disallow: /api/
