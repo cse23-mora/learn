@@ -43,8 +43,8 @@ export const GET: APIRoute = async ({ params }) => {
 					slug: cleanId,
 					title: lessonTitle,
 					description: doc.data.description || '',
-					htmlUrl: `/api/lesson/${doc.id}`,
-					webUrl: `/lesson/${doc.id}`
+					htmlUrl: `/api/lesson/${cleanId}`,
+					webUrl: `/lesson/${cleanId}`
 				};
 			})
 			.sort((a, b) => a.title.localeCompare(b.title));

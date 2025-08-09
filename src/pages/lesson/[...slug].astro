@@ -8,7 +8,7 @@ export async function getStaticPaths() {
 	return docs
 		.filter(doc => !doc.id.includes('/index'))
 		.map((doc) => ({
-			params: { slug: doc.id },
+			params: { slug: doc.id.replace(/\.(md|mdx)$/, '') },
 			props: { doc },
 		}));
 }
