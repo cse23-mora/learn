@@ -27,7 +27,7 @@ This learning hub contains educational materials for CSE students, organized by 
 
 ```bash
 # Clone the repository
-git clone <repository-url>
+git clone https://github.com/cse23-mora/learn.git
 cd learn
 
 # Install dependencies
@@ -83,7 +83,7 @@ Content is organized in `src/content/docs/` following this pattern:
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see our [Code of Conduct](CODE_OF_CONDUCT.md) for community guidelines.
+We welcome contributions! Please follow community guidelines when contributing.
 
 ### Adding Content
 
