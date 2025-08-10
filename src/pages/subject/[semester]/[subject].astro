@@ -132,7 +132,7 @@ if (subjectDocs.length === 0) {
 				<div class="lesson-group">
 					<div class="lessons-grid">
 						{rootLessons.map((lesson) => (
-							<a href={`/lesson/${lesson.id}`} class="lesson-card">
+							<a href={`/lesson/${lesson.id.replace(/\.(md|mdx)$/, '')}`} class="lesson-card">
 								<div class="lesson-content">
 									<h3>{getLessonTitle(lesson.id)}</h3>
 									<div class="lesson-meta">
@@ -150,7 +150,7 @@ if (subjectDocs.length === 0) {
 					<h2 class="folder-title">{folder.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}</h2>
 					<div class="lessons-grid">
 						{lessons.map((lesson) => (
-							<a href={`/lesson/${lesson.id}`} class="lesson-card">
+							<a href={`/lesson/${lesson.id.replace(/\.(md|mdx)$/, '')}`} class="lesson-card">
 								<div class="lesson-content">
 									<h3>{getLessonTitle(lesson.id)}</h3>
 									<div class="lesson-meta">
