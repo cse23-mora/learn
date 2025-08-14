@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
 	return [
@@ -9,6 +10,20 @@ export async function getStaticPaths() {
 }
 
 const { semester } = Astro.params;
+
+// Get all docs to count lessons
+const docs = await getCollection('docs');
+
+// Function to count lessons for a subject
+function getLessonCount(semester: string, subjectSlug: string): number {
+	const subjectPath = `${semester}-semester/${subjectSlug}`;
+	return docs.filter(doc => 
+		doc.id.startsWith(subjectPath) && 
+		doc.id !== `${subjectPath}/index` &&
+		!doc.id.includes('/index.mdx') &&
+		!doc.id.match(/\.(png|jpg|jpeg|gif|svg)$/i)
+	).length;
+}
 
 const semesterData = {
 	'2nd': {
@@ -113,14 +128,18 @@ if (!currentSemester) {
 		</div>
 		
 		<div class="subjects-grid">
-			{currentSemester.subjects.map((subject) => (
-				<a href={`/subject/${semester}/${subject.slug}`} class="subject-card">
-					<div class="card-content">
-						<h2>{subject.name}</h2>
-						<p>{subject.description}</p>
-					</div>
-				</a>
-			))}
+			{currentSemester.subjects.map((subject) => {
+				const lessonCount = getLessonCount(semester!, subject.slug);
+				return (
+					<a href={`/subject/${semester}/${subject.slug}`} class="subject-card">
+						<div class="card-content">
+							<h2>{subject.name}</h2>
+							<p>{subject.description}</p>
+							<div class="lesson-count">{lessonCount} {lessonCount === 1 ? 'lesson' : 'lessons'} available</div>
+						</div>
+					</a>
+				);
+			})}
 		</div>
 	</main>
 </Layout>
@@ -163,12 +182,21 @@ if (!currentSemester) {
 		text-decoration: none;
 		transition: all 0.3s ease;
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 	}
 
 	.subject-card:hover {
 		transform: translateY(-2px);
 		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 		border-color: #667eea;
+	}
+
+	.card-content {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
 	}
 
 	.card-content h2 {
@@ -182,6 +210,14 @@ if (!currentSemester) {
 		color: #666;
 		line-height: 1.5;
 		font-size: 0.95rem;
+		margin-bottom: 1rem;
+	}
+
+	.lesson-count {
+		color: #667eea;
+		font-weight: 500;
+		font-size: 0.9rem;
+		margin-top: auto;
 	}
 
 	@media (max-width: 768px) {
