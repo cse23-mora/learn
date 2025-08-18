@@ -1,8 +1,8 @@
 Uses separate functional layers
 Transparent implementation
 ## OSI Model
-Stands for Open System Interconnect
-Provide communication regardless of underlying architecture
+Stands for Open Systems Interconnection
+Provides communication regardless of underlying architecture
 
 Has 7 Layers with well defined functions, Boundaries make sure there's minimum information flow across layers.
 
@@ -15,7 +15,7 @@ Has 7 Layers with well defined functions, Boundaries make sure there's minimum i
 	- Data transmission and reception
 	- Topology and physical network design
 ### Data Link Layer
-- Provide error free transmission across single link
+- Provides error-free transmission across single link
 - Functions
 	- Data framing
 	- Error detection and handling
@@ -39,7 +39,7 @@ Has 7 Layers with well defined functions, Boundaries make sure there's minimum i
 	- Flow control
 	- Quality of Service
 ### Session Layer
-- Provide a means of controlling the dialog between two end users
+- Provides a means of controlling the dialog between two end users
 - Functions
 	- Dialog control (Full vs Half Duplex)
 	- Token management
@@ -52,7 +52,7 @@ Has 7 Layers with well defined functions, Boundaries make sure there's minimum i
 	- Compression
 	- Encryption
 ### Application Layer
-- Provide network based applications to users
+- Provides network-based applications to users
 - Ex:
 	- File transfer
 	- Email
