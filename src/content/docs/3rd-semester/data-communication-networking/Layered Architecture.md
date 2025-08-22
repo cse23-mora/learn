@@ -1,3 +1,8 @@
+---
+title: "1. Layered Architecture"
+description: ""
+---
+
 Uses separate functional layers
 Transparent implementation
 ## OSI Model
@@ -6,7 +11,8 @@ Provides communication regardless of underlying architecture
 
 Has 7 Layers with well defined functions, Boundaries make sure there's minimum information flow across layers.
 
-![[Pasted image 20250818204059.png]]
+![alt text](./layered-architecture/image-1.png)
+
 ### Physical Layer
 - Consists of cables, connectors, wireless radio transceivers
 - Accepts raw string of bits and transmit it across
