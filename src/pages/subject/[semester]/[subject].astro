@@ -72,19 +72,9 @@ const subjectNames = {
 const subjectName = subjectNames[subject as keyof typeof subjectNames] || subject;
 const semesterTitle = semester === '2nd' ? '2nd Semester' : '3rd Semester';
 
-// Create a function to get lesson title from file path
-function getLessonTitle(id: string): string {
-	const parts = id.split('/');
-	const filename = parts[parts.length - 1];
-	
-	// Remove file extension and convert to title case
-	const title = filename
-		.replace(/\.(md|mdx)$/, '')
-		.split('-')
-		.map(word => word.charAt(0).toUpperCase() + word.slice(1))
-		.join(' ');
-	
-	return title;
+// Create a function to get lesson title from frontmatter
+function getLessonTitle(doc: any): string {
+	return doc.data.title || doc.id.split('/').pop()?.replace(/\.(md|mdx)$/, '') || 'Untitled';
 }
 
 // Group lessons by folders
@@ -134,7 +124,7 @@ if (subjectDocs.length === 0) {
 						{rootLessons.map((lesson) => (
 							<a href={`/lesson/${lesson.id.replace(/\.(md|mdx)$/, '')}`} class="lesson-card">
 								<div class="lesson-content">
-									<h3>{getLessonTitle(lesson.id)}</h3>
+									<h3>{getLessonTitle(lesson)}</h3>
 									<div class="lesson-meta">
 										<span class="lesson-type">Lesson</span>
 									</div>
@@ -152,7 +142,7 @@ if (subjectDocs.length === 0) {
 						{lessons.map((lesson) => (
 							<a href={`/lesson/${lesson.id.replace(/\.(md|mdx)$/, '')}`} class="lesson-card">
 								<div class="lesson-content">
-									<h3>{getLessonTitle(lesson.id)}</h3>
+									<h3>{getLessonTitle(lesson)}</h3>
 									<div class="lesson-meta">
 										<span class="lesson-type">Lesson</span>
 									</div>
