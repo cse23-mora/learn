@@ -56,7 +56,7 @@ description: ""
 - Data encoded as presence or absence of signal transition at beginning of bit time
 - Transition denotes a 1
 - No transition denote a 0
-- An example of **Differntial Encoding**
+- An example of **Differential Encoding**
 ![NRZI](./encoding/Pasted%20image%2020250818210639.png)
 #### Differential Encoding
 - Data represented by changes
@@ -93,7 +93,7 @@ description: ""
 - Not as efficient as NRZ
 	- Each signal only represent one bit
 	- In 3 level system could represent $log_23 = 1.58$ bits
-	- Reciever must distinguis between three levels
+	- Receiver must distinguish between three levels
 	- Requires 3dB more signal power for same probability of bit error
 ### Biphase
 #### Manchester
@@ -141,12 +141,12 @@ description: ""
 - If 8 continuous zeros and previous pulse is negative, encode as 000-+0+-
 	- If a pulse is - and there are 8 zeroes after that,
 	  then encode is as 000-+0+-
-	  this causes and AMI violation because the 4th item
+	  this causes an AMI violation because the 4th item
 	  is - and the previous pulse is also -
 	  the second AMI violation occurs at position 7
 - Causes two violations of AMI code
 - Unlikely to occur as a result of noise
-- Reciever detect and interprets as octet of all zeros
+- Receiver detects and interprets as octet of all zeros
 ### HDB3
 - High Density Bipolar 3 Zeros
 - Based on Bipolar-AMI
