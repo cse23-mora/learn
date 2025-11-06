@@ -121,116 +121,77 @@ if (!currentSemester) {
 ---
 
 <Layout title={`${currentSemester.title} | Knowledge Hub`}>
-	<main>
-		<div class="header">
-			<h1>{currentSemester.title}</h1>
-			<p>Choose a subject to explore lessons and materials</p>
+	<!-- Breadcrumbs -->
+	<div class="text-sm breadcrumbs mb-6">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li class="font-semibold">{currentSemester.title}</li>
+		</ul>
+	</div>
+
+	<!-- Header -->
+	<div class="mb-8">
+		<h1 class="text-4xl font-bold mb-3 text-primary">
+			{currentSemester.title}
+		</h1>
+		<p class="text-lg opacity-70">Choose a subject to explore lessons and materials</p>
+	</div>
+
+	<!-- Stats -->
+	<div class="stats stats-vertical lg:stats-horizontal shadow mb-8 w-full">
+		<div class="stat">
+			<div class="stat-figure text-primary">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+				</svg>
+			</div>
+			<div class="stat-title">Total Subjects</div>
+			<div class="stat-value text-primary">{currentSemester.subjects.length}</div>
+			<div class="stat-desc">Available for this semester</div>
 		</div>
-		
-		<div class="subjects-grid">
-			{currentSemester.subjects.map((subject) => {
-				const lessonCount = getLessonCount(semester!, subject.slug);
-				return (
-					<a href={`/subject/${semester}/${subject.slug}`} class="subject-card">
-						<div class="card-content">
-							<h2>{subject.name}</h2>
-							<p>{subject.description}</p>
-							<div class="lesson-count">{lessonCount} {lessonCount === 1 ? 'lesson' : 'lessons'} available</div>
+
+		<div class="stat">
+			<div class="stat-figure text-primary">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+				</svg>
+			</div>
+			<div class="stat-title">Total Lessons</div>
+			<div class="stat-value text-primary">
+				{currentSemester.subjects.reduce((acc, subject) => acc + getLessonCount(semester!, subject.slug), 0)}
+			</div>
+			<div class="stat-desc">Notes and resources</div>
+		</div>
+	</div>
+
+	<!-- Subjects Grid -->
+	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+		{currentSemester.subjects.map((subject) => {
+			const lessonCount = getLessonCount(semester!, subject.slug);
+			return (
+				<a
+					href={`/subject/${semester}/${subject.slug}`}
+					class="card bg-base-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 border border-base-300"
+				>
+					<div class="card-body">
+						<h2 class="card-title text-lg">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+							</svg>
+							{subject.name}
+						</h2>
+						<p class="text-sm opacity-70 flex-grow">{subject.description}</p>
+						<div class="card-actions justify-between items-center mt-4">
+							<div class="badge badge-primary badge-outline">
+								{lessonCount} {lessonCount === 1 ? 'lesson' : 'lessons'}
+							</div>
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+							</svg>
 						</div>
-					</a>
-				);
-			})}
-		</div>
-	</main>
+					</div>
+				</a>
+			);
+		})}
+	</div>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 2rem;
-		max-width: 1200px;
-	}
-
-	.header {
-		text-align: center;
-		margin-bottom: 3rem;
-	}
-
-	.header h1 {
-		font-size: 2.5rem;
-		font-weight: 700;
-		margin-bottom: 0.5rem;
-		color: #1a202c;
-	}
-
-	.header p {
-		font-size: 1.1rem;
-		color: #666;
-	}
-
-	.subjects-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-		gap: 1.5rem;
-	}
-
-	.subject-card {
-		background: white;
-		border: 1px solid #e2e8f0;
-		border-radius: 8px;
-		padding: 1.5rem;
-		text-decoration: none;
-		transition: all 0.3s ease;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-	}
-
-	.subject-card:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-		border-color: #667eea;
-	}
-
-	.card-content {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-	}
-
-	.card-content h2 {
-		color: #1a202c;
-		font-size: 1.25rem;
-		margin-bottom: 0.5rem;
-		font-weight: 600;
-	}
-
-	.card-content p {
-		color: #666;
-		line-height: 1.5;
-		font-size: 0.95rem;
-		margin-bottom: 1rem;
-	}
-
-	.lesson-count {
-		color: #667eea;
-		font-weight: 500;
-		font-size: 0.9rem;
-		margin-top: auto;
-	}
-
-	@media (max-width: 768px) {
-		main {
-			padding: 1rem;
-		}
-		
-		.header h1 {
-			font-size: 2rem;
-		}
-		
-		.subjects-grid {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>

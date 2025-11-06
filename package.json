@@ -5,15 +5,22 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro build && npx pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.4.2",
-    "astro": "^5.6.1",
+    "@astrojs/sitemap": "^3.6.0",
+    "@tailwindcss/vite": "^4.1.16",
+    "astro": "^5.15.3",
     "rehype-mathjax": "^7.1.0",
     "remark-math": "^6.0.0",
-    "sharp": "^0.32.5"
+    "sharp": "^0.34.5",
+    "tailwindcss": "^4.1.16"
+  },
+  "devDependencies": {
+    "@catppuccin/daisyui": "^2.1.1",
+    "daisyui": "^5.4.5",
+    "pagefind": "^1.4.0"
   }
 }
