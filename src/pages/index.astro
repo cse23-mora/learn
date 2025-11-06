@@ -3,113 +3,120 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Knowledge Hub | CSE23">
-	<main>
-		<div class="hero">
-			<h1>Knowledge Hub | CSE23</h1>
-			<p>Select your semester to explore educational content</p>
+	<!-- Hero Section -->
+	<div class="hero bg-primary/10 rounded-3xl mb-12 py-16">
+		<div class="hero-content text-center">
+			<div class="max-w-2xl">
+				<h1 class="text-5xl font-bold mb-6">
+					<span class="text-primary">
+						Welcome to CSE23 Knowledge Hub
+					</span>
+				</h1>
+				<p class="text-xl mb-2 opacity-80">
+					A collaborative knowledge hub built by students, for students
+				</p>
+				<p class="text-base opacity-60">
+					Select your semester to explore course materials, notes, and resources
+				</p>
+			</div>
 		</div>
-		
-		<div class="semester-grid">
-			<a href="/semester/2nd" class="semester-card">
-				<div class="card-content">
-					<h2>2nd Semester</h2>
-					<p>Data Structures, Computer Organization, Mathematics, and more</p>
-					<div class="subject-count">6 subjects available</div>
+	</div>
+
+	<!-- Semesters Grid -->
+	<div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto mb-12">
+		<!-- 2nd Semester Card -->
+		<a href="/semester/2nd" class="card bg-base-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-2 border border-base-300">
+			<div class="card-body">
+				<div class="flex items-start justify-between">
+					<h2 class="card-title text-2xl mb-3">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+						</svg>
+						2nd Semester
+					</h2>
+					<div class="badge badge-primary badge-lg">6 Subjects</div>
 				</div>
-			</a>
-			
-			<a href="/semester/3rd" class="semester-card">
-				<div class="card-content">
-					<h2>3rd Semester</h2>
-					<p>AI, Database Systems, Operating Systems, and more</p>
-					<div class="subject-count">9 subjects available</div>
+				<p class="text-base-content/70 mb-4">
+					Data Structures & Algorithms, Computer Organization, Methods of Mathematics, Theory of Electricity, and more
+				</p>
+				<div class="card-actions justify-end">
+					<div class="badge badge-outline">Data Structures</div>
+					<div class="badge badge-outline">Math</div>
+					<div class="badge badge-outline">+4 more</div>
 				</div>
-			</a>
+			</div>
+		</a>
+
+		<!-- 3rd Semester Card -->
+		<a href="/semester/3rd" class="card bg-base-100 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-2 border border-base-300">
+			<div class="card-body">
+				<div class="flex items-start justify-between">
+					<h2 class="card-title text-2xl mb-3">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+						</svg>
+						3rd Semester
+					</h2>
+					<div class="badge badge-primary badge-lg">9 Subjects</div>
+				</div>
+				<p class="text-base-content/70 mb-4">
+					Artificial Intelligence, Database Systems, Data Communication & Networking, Thermodynamics, and more
+				</p>
+				<div class="card-actions justify-end">
+					<div class="badge badge-outline">AI</div>
+					<div class="badge badge-outline">Databases</div>
+					<div class="badge badge-outline">+7 more</div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<!-- Features Section -->
+	<div class="divider my-12">Features</div>
+
+	<div class="grid md:grid-cols-3 gap-6 mb-12">
+		<div class="card bg-base-100 shadow-sm border border-base-300">
+			<div class="card-body items-center text-center">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+				</svg>
+				<h3 class="card-title">Quick Search</h3>
+				<p class="text-sm opacity-70">Find any topic or note instantly with our powerful search feature</p>
+			</div>
 		</div>
-	</main>
+
+		<div class="card bg-base-100 shadow-sm border border-base-300">
+			<div class="card-body items-center text-center">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-secondary mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+				</svg>
+				<h3 class="card-title">Community Driven</h3>
+				<p class="text-sm opacity-70">Notes created and maintained by fellow students</p>
+			</div>
+		</div>
+
+		<div class="card bg-base-100 shadow-sm border border-base-300">
+			<div class="card-body items-center text-center">
+				<svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-accent mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+				</svg>
+				<h3 class="card-title">Well Organized</h3>
+				<p class="text-sm opacity-70">Content structured by semester, subject, and topic</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Call to Action -->
+	<div class="alert bg-primary/20 border-primary/30">
+		<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-current shrink-0 w-6 h-6">
+			<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+		</svg>
+		<div class="flex-1">
+			<h3 class="font-bold">Want to contribute?</h3>
+			<p class="text-sm">Help your fellow students by adding or improving notes on GitHub</p>
+		</div>
+		<a href="https://github.com/cse23-mora/learn" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
+			Contribute
+		</a>
+	</div>
 </Layout>
-
-<style>
-	main {
-		margin: auto;
-		padding: 2rem;
-		max-width: 1200px;
-	}
-
-	.hero {
-		text-align: center;
-		margin-bottom: 4rem;
-	}
-
-	.hero h1 {
-		font-size: 3rem;
-		font-weight: 700;
-		margin-bottom: 1rem;
-		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-	}
-
-	.hero p {
-		font-size: 1.2rem;
-		color: #666;
-	}
-
-	.semester-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 2rem;
-		max-width: 800px;
-		margin: 0 auto;
-	}
-
-	.semester-card {
-		background: white;
-		border: 1px solid #e2e8f0;
-		border-radius: 12px;
-		padding: 2rem;
-		text-decoration: none;
-		transition: all 0.3s ease;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-	}
-
-	.semester-card:hover {
-		transform: translateY(-4px);
-		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-		border-color: #667eea;
-	}
-
-	.card-content h2 {
-		color: #1a202c;
-		font-size: 1.5rem;
-		margin-bottom: 0.5rem;
-		font-weight: 600;
-	}
-
-	.card-content p {
-		color: #666;
-		margin-bottom: 1rem;
-		line-height: 1.6;
-	}
-
-	.subject-count {
-		color: #667eea;
-		font-weight: 500;
-		font-size: 0.9rem;
-	}
-
-	@media (max-width: 768px) {
-		main {
-			padding: 1rem;
-		}
-		
-		.hero h1 {
-			font-size: 2rem;
-		}
-		
-		.semester-grid {
-			grid-template-columns: 1fr;
-		}
-	}
-</style>
